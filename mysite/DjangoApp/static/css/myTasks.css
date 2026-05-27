@@ -1,0 +1,87 @@
+.tasks-title {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 3rem;
+    color: #20b2aa ;
+
+}
+
+.tasks-grid {
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 20px;
+    margin: 1.5rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.task-card {
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    border-left: 10px solid #ff6b6b;
+
+    /*margin: 0 auto;*/
+    /*max-width: 600px;*/
+    width: 30rem;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+}
+
+/* סטטוסים */
+.task-card.new {
+    border-left: 10px solid #ff6b6b;
+}
+
+.task-card.completed {
+     border-left: 10px solid #24ecbf;
+    /*background: rgba(34, 177, 137, 0.15);*/
+}
+
+.task-card.in-progress {
+    /*background: rgba(228, 123, 194, 0.15);*/
+    border-left: 10px solid #ff9800;
+}
+
+.task-card.pending {
+   border-left: 10px solid #ff9800;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.task-status {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #eee;
+}
+
+.task-desc {
+    margin: 10px 0;
+    color: #555;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.no-tasks {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}

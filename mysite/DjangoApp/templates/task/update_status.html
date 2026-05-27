@@ -1,0 +1,27 @@
+{% extends 'djApp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+<link rel="stylesheet" href="{% static 'css/allTask.css' %}">
+<h2>עדכון סטטוס למשימה: {{ task.name }}</h2>
+
+<div class="status-update-container">
+    <p><strong>תיאור:</strong> {{ task.desc }}</p>
+    <p><strong>אחראי:</strong> {{ task.performer }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="status">בחר סטטוס חדש:</label>
+        <select name="status" id="status">
+            <option value="In_Progress" {% if task.status == 'In_Progress' %}selected{% endif%} >בתהליך </option>
+            <option value="Completed" {% if task.status == 'Completed' %}selected{% endif %} >הושלם </option>
+        </select>
+
+        <br><br>
+        <button type="submit">עדכן סטטוס</button>
+        <a href="{% url 'allTask' %}">ביטול</a>
+    </form>
+</div>
+</div>
+{% endblock %}

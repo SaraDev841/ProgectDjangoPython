@@ -1,0 +1,37 @@
+{% extends 'djApp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <h2>Register</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p>
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </p>
+
+        <p class="tooltip">
+            <label for="id_password1">Password:</label>
+            {{ form.password1 }}
+            <span class="tooltip-text">
+                סיסמה חייבת להיות לפחות 8 תווים,<br>
+                לכלול אות גדולה, אות קטנה ומספר
+            </span>
+        </p>
+
+        <p class="tooltip">
+            <label for="id_password2">Confirm Password:</label>
+            {{ form.password2 }}
+            <span class="tooltip-text">
+                הזן את אותה הסיסמה שוב כדי לאשר
+            </span>
+        </p>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="{% url 'login' %}">Login</a>
+</div>
+{% endblock %}

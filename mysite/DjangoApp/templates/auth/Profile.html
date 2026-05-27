@@ -1,0 +1,17 @@
+{% extends 'djApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form-container">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <h2> {{ request.user.username }} :Edit Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+
+
+</div>
+    {#<a href="{% url 'home' %}">Back to Login</a>#}
+{% endblock %}

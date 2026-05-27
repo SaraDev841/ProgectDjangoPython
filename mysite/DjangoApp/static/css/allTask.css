@@ -1,0 +1,423 @@
+/* ===== עיצוב עמוד המשימות המלא - קונספט ורוד-טורקיז עדין ===== */
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    color: #2d3436;
+}
+
+.content {
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+
+    background: linear-gradient(45deg,#0093E9 0%,#2AF598 100%);
+
+   /* background: linear-gradient(135deg, #006666 0%, #008b8b 100%);*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.task-container {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+/* ===== עיצוב הטבלה ===== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    direction: ltr;
+}
+
+thead th {
+    background: transparent;
+    color: #1a1a1a;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+tbody td {
+    padding: 20px 15px;
+    text-align: center;
+    border-top: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+}
+
+tbody tr td:first-child {
+    border-left: 1px solid #edf2f7;
+    border-radius: 12px 0 0 12px;
+}
+tbody tr td:last-child {
+    border-right: 1px solid #edf2f7;
+    border-radius: 0 12px 12px 0;
+}
+
+tbody tr:hover {
+    transform: translateY(-2px);
+    border-color: #00d2ff;
+}
+
+/* ===== כפתורים בעיצוב שטוח (Flat) ללא צל בולט ===== */
+.btn-assign, .btn-status, .btn-edit, .btn-delete, .btn-add {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px; /* צורה זהה לכפתור עריכה */
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent;
+    box-shadow: none; /* הסרת צל בולט */
+}
+
+/* כפתור הוספה והקצאה - טורקיז עדין */
+.btn-add, .btn-assign {
+    background: #e0f7fa;
+    color: #00838f;
+    border: 1px solid #b2ebf2;
+}
+
+/* כפתור הוספת משימה - עכשיו באותה צורה של כפתור עריכה */
+/*.btn-add {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1100;
+    padding: 12px 25px;
+}*/
+/* כפתור הוספת משימה בעיצוב כהה וברור עם מסגרת מודגשת */
+.btn-add {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1100;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+
+    /* רקע כהה יותר (כמו אפקט ה-Hover הקודם) */
+    background: linear-gradient(135deg, #008b8b 0%, #20b2aa 100%);
+    color: #ffffff; /* טקסט לבן לניגודיות מקסימלית */
+
+    /* מסגרת כהה ובולטת */
+    border: 2px solid #006666;
+    box-shadow: none;
+}
+
+.btn-add:hover {
+    /* הכהיה נוספת במעבר עכבר */
+    background: linear-gradient(135deg, #006666 0%, #008b8b 100%);
+    border-color: #004d4d;
+    transform: translateY(-2px);
+}
+/*
+.btn-add:hover, .btn-assign:hover {
+    background: #b2ebf2;
+}*/
+
+/* כפתור סטטוס - ורוד פסטלי */
+.btn-status {
+    background: #fce4ec;
+    color: #d81b60;
+    border: 1px solid #f8bbd0;
+}
+
+.btn-status:hover {
+    background: #f8bbd0;
+}
+
+.btn-edit {
+    background: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+}
+
+.btn-delete {
+    background: #fff5f5;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+}
+
+/* ===== משימה שהושלמה - שילוב ירוק-טורקיז עדין ===== */
+.task-completed {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%) !important;
+    border-color: #b2f5ea !important;
+}
+
+.task-completed td {
+    color: #2c7a7b !important;
+    font-weight: 700;
+}
+
+/* מובייל */
+@media (max-width: 768px) {
+    .content { padding: 1rem; }
+    h1 { font-size: 2rem; }
+    .btn-add { bottom: 20px; right: 20px; }
+}
+
+/* ===== Filter sidebar: modern left panel ===== */
+.page-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 1.5rem;
+}
+
+.filter-panel {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 8px 30px rgba(22, 28, 36, 0.06);
+    border: 1px solid rgba(0,0,0,0.03);
+    position: sticky;
+    top: 96px; /* sits under the navbar */
+    height: fit-content;
+}
+
+.filter-header {
+    margin-bottom: 12px;
+}
+
+.filter-title {
+    margin: 0;
+    font-size: 1.25rem;
+    background: linear-gradient(45deg,#0093E9 0%,#2AF598 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.filter-sub {
+    margin: 0;
+    margin-top: 4px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.filter-group label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.filter-select,
+.filter-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #e6eef2;
+    background: #fbfeff;
+    font-size: 0.95rem;
+    transition: box-shadow 0.15s ease, transform 0.12s ease;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    box-shadow: 0 6px 18px rgba(3, 155, 199, 0.12);
+    transform: translateY(-1px);
+    border-color: #00a3d1;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.btn-filter {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #008b8b 0%, #20b2aa 100%);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(32,178,170,0.15);
+}
+
+.btn-filter:hover {
+    transform: translateY(-2px);
+}
+
+.btn-clear {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: transparent;
+    color: #374151;
+    border: 1px solid #e6eef2;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-footer {
+    margin-top: 14px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Responsive: collapse to single column on mobile */
+@media (max-width: 900px) {
+    .page-grid {
+        grid-template-columns: 1fr;
+    }
+    .filter-panel {
+        position: relative;
+        top: 0;
+        margin-bottom: 18px;
+    }
+}
+
+/* ===== Filter Row: Modern Horizontal Filter Bar ===== */
+.filter-container {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 30px rgba(22, 28, 36, 0.06);
+    border: 1px solid rgba(0,0,0,0.03);
+    margin: 1.5rem 0;
+}
+
+.filter-form-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    direction: ltr;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.filter-group-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-group-row label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-select,
+.filter-input {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #e6eef2;
+    background: #fbfeff;
+    font-size: 0.95rem;
+    transition: box-shadow 0.15s ease, transform 0.12s ease;
+    min-width: 160px;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    box-shadow: 0 6px 18px rgba(3, 155, 199, 0.12);
+    transform: translateY(-1px);
+    border-color: #00a3d1;
+}
+
+.filter-buttons-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-filter {
+    padding: 10px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #008b8b 0%, #20b2aa 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 20px rgba(32,178,170,0.15);
+    transition: all 0.2s ease;
+}
+
+.btn-filter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(32,178,170,0.25);
+}
+
+.btn-clear {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: transparent;
+    color: #374151;
+    border: 1px solid #e6eef2;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-clear:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 768px) {
+    .filter-form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-select,
+    .filter-input {
+        width: 100%;
+        min-width: auto;
+    }
+}

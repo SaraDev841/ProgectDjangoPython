@@ -1,0 +1,152 @@
+/* ===== משתני עיצוב ===== */
+:root {
+    /* מעבר מצבע פוקסיה עז לורוד בהיר עדין */
+   /* --bg-main: linear-gradient(135deg, #ff00ff 0%, #ffb6c1 100%);*/
+
+    /* במידה והפוקסיה חזקה מדי, ניתן להשתמש בגרסה רכה יותר: */
+    /* --bg-main: linear-gradient(135deg, #e75480 0%, #ffc0cb 100%);*/
+    --bg-main: linear-gradient(135deg, #ffc0cb 0%,  #e75480 100%);
+
+    --accent: #f5576c;
+    --text: #ffffff;
+    --glass: rgba(255, 255, 255, 0.15);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+.nav-container {
+    direction: ltr;
+}
+
+.nav-links {
+    direction: ltr;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    background: var(--bg-main);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideDown 0.5s ease-out;
+}
+
+.nav-container {
+    max-width: 1200rem;
+    margin: auto;
+    padding: 0 2rem;
+    height: 83px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== Logo ===== */
+.nav-logo {
+    display: flex;         /* מאפשר שליטה במיקום התמונה לצד הטקסט */
+    align-items: center;   /* ממרכז אותם אנכית */
+    gap: 10px;            /* שולט במרחק המדויק ביניהם */
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    margin-left: 3rem;
+}
+
+/* ===== Links ===== */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+/* underline אנימטיבי */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    left: 20%;
+    width: 60%;
+}
+
+.nav-links a:hover {
+    background: var(--glass);
+    transform: translateY(-2px);
+}
+
+/* ===== כפתור ראשי ===== */
+.nav-links a[href*="create_task"] {
+    background: linear-gradient(135deg, #f093fb, var(--accent));
+    box-shadow: 0 6px 18px rgba(245, 87, 108, 0.5);
+    font-weight: 600;
+}
+
+.nav-links a[href*="create_task"]:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ===== Logout ===== */
+.nav-links a[href*="logout"]:hover {
+    background: rgba(255, 59, 48, 0.85);
+}
+
+/* ===== Focus לנגישות ===== */
+.nav-links a:focus {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+/* ===== מובייל ===== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links a {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-main: linear-gradient(135deg, #2b2e4a, #1f1f2e);
+    }
+}
+
